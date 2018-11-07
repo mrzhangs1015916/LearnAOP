@@ -1,10 +1,8 @@
 package com.pc.aop.aspect;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 /**
@@ -34,6 +32,16 @@ public class CRUDAspect {
     @Before("execution(* com.pc.aop.service.UserService.select(..))")
     public void ShowZsName(){
         System.out.println("张帅");
+    }
+    @Around("execution(* com.pc.aop.service.UserService.insert(..))")
+    public void AroundFunc(ProceedingJoinPoint jp){
+        System.out.println("开始");
+        try {
+            jp.proceed();
+            System.out.println("结束");
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
     }
 
     @AfterReturning("execution(* com.pc.aop.service.*.*(..))")
