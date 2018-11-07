@@ -35,10 +35,10 @@ public class CRUDAspect {
     }
     @Around("execution(* com.pc.aop.service.UserService.insert(..))")
     public void AroundFunc(ProceedingJoinPoint jp){
-        System.out.println("开始");
+        System.out.println("开始...");
         try {
             jp.proceed();
-            System.out.println("结束");
+            System.out.println("结束...");
         } catch (Throwable throwable) {
             throwable.printStackTrace();
         }
