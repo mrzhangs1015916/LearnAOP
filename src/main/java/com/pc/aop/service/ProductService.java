@@ -3,7 +3,7 @@ package com.pc.aop.service;
 import org.springframework.stereotype.Component;
 
 /**
- * 产品服务类1
+ * 产品服务类12
  * Created by switch on 16/10/2.
  */
 @Component("productService")
